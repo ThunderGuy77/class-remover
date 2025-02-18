@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Class Remover</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: black;
+      color: white;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      display: flex;
+      justify-content: space-between;
+      padding: 5px;
+      background-color: rgb(43, 43, 43);
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
+    button {
+      border-radius: 5px;
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition-duration: 0.25s;
+    }
+    button:hover {
+      background-color: #ffffff;
+      color: #f44336;
+    }
+    input {
+      padding: 5px;
+      border-radius: 5px;
+      border: none;
+    }
+    .message {
+      color: red;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Class Remover</h1>
+  <input type="text" id="classInput" placeholder="Enter class name">
+  <button id="addClassBtn">Add Class</button>
+  <ul id="classList"></ul>
+  <p class="message" id="refreshMessage" style="display: none;">Please refresh the page to see the changes.</p>
+
+  <script src="popup.js"></script>
+</body>
+</html>
