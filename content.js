@@ -1,9 +1,28 @@
-function removeSpecificDashboardCards() {
+//get the saved data
+chrome.storage.local.get('classes', function (data) {
+  if (chrome.runtime.lastError) {
+    console.error(chrome.runtime.lastError);
+    return;
+  }
+  if (data.classes) {
+    removeSpecificDashboardCards(data.classes);
+  } else {
+    console.log("No classes found in storage. Please add classes in the extension menu.");
+  }
+});
+
+//function to remove the specific dashboard cards
+function removeSpecificDashboardCards(allNames) {
+  let allClassNames = allNames.map(name => name.toLowerCase()); //array of class names to remove, converted to lowercase
   document.querySelectorAll('.ic-DashboardCard').forEach(card => {
     const innerDiv = card.querySelector('.ic-DashboardCard__header-subtitle');
-    if (innerDiv && innerDiv.textContent.includes("2024FA-CIS")) {
-      card.parentNode.removeChild(card);
-    }
+    const innerSpan = card.querySelectorAll('span');
+    allClassNames.forEach(className => {
+      if ((innerDiv && innerDiv.textContent.toLowerCase().includes(className)) || 
+          (innerSpan && innerSpan[0] && innerSpan[0].textContent.toLowerCase().includes(className))) {
+        card.parentNode.removeChild(card);
+      }
+    });
   });
 }
 
@@ -11,7 +30,11 @@ function removeSpecificDashboardCards() {
 const observer = new MutationObserver((mutations) => {
   mutations.forEach((mutation) => {
     if (mutation.addedNodes.length > 0) {
-      removeSpecificDashboardCards();
+      chrome.storage.local.get('classes', function (data) {
+        if (data.classes) {
+          removeSpecificDashboardCards(data.classes);
+        }
+      });
     }
   });
 });

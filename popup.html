@@ -2,13 +2,23 @@
 <html>
 <head>
   <title>Class Remover</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quantico&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Quantico', sans-serif;
       text-align: center;
       background-color: black;
       color: white;
+      min-width: 300px;
     }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+    }
+
     ul {
       list-style-type: none;
       padding: 0;
@@ -16,11 +26,16 @@
     li {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       padding: 5px;
       background-color: rgb(43, 43, 43);
       border: 1px solid #ddd;
       border-radius: 5px;
       margin-bottom: 5px;
+    }
+
+    h1 {
+      margin: 0;
     }
     button {
       border-radius: 5px;
@@ -44,15 +59,32 @@
       color: red;
       margin-top: 10px;
     }
+    a {
+      color: #f44336;
+      transition-duration: 0.25s;
+    }
+    a:hover {
+      color: #ffffff;
+    }
   </style>
 </head>
 <body>
-  <h1>Class Remover</h1>
-  <input type="text" id="classInput" placeholder="Enter class name">
-  <button id="addClassBtn">Add Class</button>
+  <div class="container">
+    <h1>Class Remover</h1>
+    <input type="text" id="classInput" placeholder="Enter class name">
+    <button id="addClassBtn">Remove Class</button>
+  </div>
+
+  <h3>Removed Classes</h3>
   <ul id="classList"></ul>
+
   <p class="message" id="refreshMessage" style="display: none;">Please refresh the page to see the changes.</p>
 
   <script src="popup.js"></script>
+
+  <h3>How To Use</h3>
+  <p style="text-align: left;">Enter the name of the class you'd like to remove and press "Remove Class". Refresh, and the class will be gone!</p>
+  <p style="text-align: left;">For best results, try to match the name exactly. Unless you're purposely trying to get rid of your other classes too. You can use either the original name of the class or your custom name for the class to remove them from your dashboard.</p>
+  <p>Created by <a href="https://thunderboltweb.com" target="_blank">@ThunderGuy</a></p>
 </body>
 </html>

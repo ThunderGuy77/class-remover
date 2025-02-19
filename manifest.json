@@ -1,25 +1,26 @@
 {
-    "manifest_version": 3,
-    "name": "Class Remover",
-    "version": "1.0",
-    "description": "A Chrome extension to remove class divs",
-    "permissions": [],
-    "action": {
-      "default_popup": "popup.html",
-      "default_icon": {
-        "16": "icon.png",
-        "48": "icon.png",
-        "128": "icon.png"
-      }
-    },
-    "content_security_policy": {
-      "extension_pages": "script-src 'self'; object-src 'self'"
-    },
-    "content_scripts": [
-      {
-        "matches": ["*://*.instructure.com/*"],
-        "js": ["content.js"]
-      }
-    ]
-  }
-  
+  "manifest_version": 3,
+  "name": "Canvas Class Remover",
+  "version": "1.0",
+  "description": "An extension that removes classes from the Canvas LMS dashboard.",
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.instructure.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
